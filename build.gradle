@@ -1,0 +1,48 @@
+buildscript {
+    ext{
+        springBootVersion = '2.1.7.RELEASE'
+    }
+    repositories {
+        mavenCentral()
+        jcenter()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
+}
+
+/*gradle ver 4.3이후 방식*/
+//plugins {
+//    id 'java'
+//    id 'eclipse'
+//    id 'org.springframework.boot'
+//    id 'io.spring.dependency-management' /*spring boot 의존성 관리 플러그인*/
+//}
+
+/*gradle ver 4.3이전 방식 - 현 프로젝트 ver 4.10.2*/
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management' /*spring boot 의존성 관리 플러그인*/
+
+group 'com.jojoldu.book'
+version '1.0-SNAPSHOT'
+sourceCompatibility = 1.8
+
+/*각종 의존성(라이브러리)들을 어떤 원격 저장소에서 받을지 정함*/
+repositories {
+    mavenCentral()
+//    jcenter()
+}
+
+/*개발에 필요한 의존성(라이브러리)를 선언하는 곳
+버전을 명시하지 않으면 위에 선언한 springBootVersion을 따라감*/
+dependencies {
+    compile('org.springframework.boot:spring-boot-starter-web')
+    testCompile('org.springframework.boot:spring-boot-starter-test')
+
+}
+
+test {
+    useJUnitPlatform()
+}
