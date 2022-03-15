@@ -39,6 +39,7 @@ repositories {
 버전을 명시하지 않으면 위에 선언한 springBootVersion을 따라감*/
 dependencies {
     compile('org.springframework.boot:spring-boot-starter-web')
+    compile('org.projectlombok:lombok') /*settigs > Enable annotation processing 체크*/
     testCompile('org.springframework.boot:spring-boot-starter-test')
 
 }
