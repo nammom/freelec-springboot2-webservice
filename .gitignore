@@ -1,4 +1,6 @@
 # Project exclude paths
-.gradle
-.idea
-.class
+*.gradle
+*.idea
+*.class
+
+application-oauth.properties

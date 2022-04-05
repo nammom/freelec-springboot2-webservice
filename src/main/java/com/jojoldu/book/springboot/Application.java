@@ -9,7 +9,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
  * 항상 프로젝트 최상단에 있어야함
  * 스프링 부트의 자동설정, 스프링 Bean읽기와 생성을 모두 자동으로 설정
  */
-@EnableJpaAuditing  //JPA Auditing 활성화
+//@EnableJpaAuditing  //JPA Auditing 활성화 - Jpaconfig 분리
 @SpringBootApplication
 public class Application {
     public static void main(String[] args){

@@ -1,9 +1,13 @@
 package com.jojoldu.book.springboot.web;
 
+import com.jojoldu.book.springboot.config.auth.SecurityConfig;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.FilterType;
+import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
@@ -17,13 +21,16 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
  * settings > gradle > Run tests using : IntelliJ IDEA
  */
 @RunWith(SpringRunner.class)        //테스트 진행시 JUnit 실행자 외에 다른 실행자를 실행 - SpringRunner 스프링 실행자
-@WebMvcTest                         //Web에 집중할 수 있는 테스트 - Controller, ControllerAdvice 등 사용 가능(Service, Component, Repository X)
+@WebMvcTest(controllers = HelloController.class,
+    excludeFilters = {@ComponentScan.Filter(type = FilterType.ASSIGNABLE_TYPE, classes = SecurityConfig.class)})
+//Web에 집중할 수 있는 테스트 - Controller, ControllerAdvice 등 사용 가능(Service, Component, Repository X)
 public class HelloControllerTest {
 
     @Autowired
     private MockMvc mvc;    //web API를 테스트할 때 사용 - HTTP GET, POST 테스트 가능
 
     @Test
+    @WithMockUser(roles = "USER")
     public void returnHello() throws Exception{
         String hello = "hello";
 
@@ -34,6 +41,7 @@ public class HelloControllerTest {
     }
 
     @Test
+    @WithMockUser(roles = "USER")
     public void returnHelloDto() throws Exception{
         String name = "김지영";
         int amount = 1000;
