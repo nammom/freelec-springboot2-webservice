@@ -3,7 +3,7 @@
 REPOSITORY=/home/ec2-user/app/step2
 PROJECT_NAME=freelec-springboot2-webservice
 
-cd $REPOSITORY/$PROJECT_NAME/
+cd $REPOSITORY/zip/*.jar $REPOSITORY/
 
 echo "> Build파일 복사"
 
