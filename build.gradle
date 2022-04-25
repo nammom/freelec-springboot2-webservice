@@ -1,3 +1,4 @@
+
 buildscript {
     ext{
         springBootVersion = '2.1.7.RELEASE'
@@ -10,6 +11,9 @@ buildscript {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
     }
 }
+
+version '1.0.1-SNAPSHOT-' + new Date().format("yyyyMMddHHmmss")
+
 
 /*gradle ver 4.3이후 방식*/
 //plugins {
