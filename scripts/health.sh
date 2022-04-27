@@ -17,7 +17,7 @@ do
   RESPONSE=$(curl -s http://localhost:${IDLE_PORT}/profile)
   UP_COUNT=$(echo ${RESPONSE} | grep 'real' | wc -1)
 
-  if[ ${UP_COUNT} -ge 1 ]
+  if [ ${UP_COUNT} -ge 1 ]
   then
     echo "> Health Check 성공"
     switch_proxy
